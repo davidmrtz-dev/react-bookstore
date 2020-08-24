@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const BooksForm = ({ books }) => (
   <form>
     <label htmlFor="title">Title</label>
-    <input type="text" name="title" id="title" />
+    <input type="text" name="title" id="title" required />
     <label htmlFor="category">Category</label>
     <input list="category-list" />
     <datalist id="category-list">
@@ -19,11 +19,12 @@ const BooksForm = ({ books }) => (
       <option value="Learning" />
       <option value="Sci-Fi" />
     </datalist>
+    <button type="submit">Add book</button>
   </form>
 );
 
 export default BooksForm;
 
-BooksForm.propTypes = {
-  books: PropTypes.array.isRequired,
-};
+// BooksForm.propTypes = {
+//   books: PropTypes.array.isRequired,
+// };

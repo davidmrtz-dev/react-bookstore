@@ -5,17 +5,25 @@ import Book from '../components/Book';
 
 const BookList = ({ books }) => (
   <table>
-    <tr>
-      <th>Book ID</th>
-      <th>Title</th>
-      <th>Category</th>
-    </tr>
-    {books && books.map(book => <Book key={book.id} book={book} />)}
+    <thead>
+      <tr>
+        <th>Book ID</th>
+        <th>Title</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      {books && books.map(book => <Book key={book.id} book={book} />)}
+    </tbody>
   </table>
 );
 
 export default BookList;
 
+BookList.defaultProps = {
+  books: [],
+};
+
 BookList.propTypes = {
-  books: PropTypes.array.isRequired,
+  books: PropTypes.any,
 };
