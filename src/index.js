@@ -16,7 +16,7 @@ const exampleLib = [
   {
     id: Math.floor(Math.random() * 1000),
     title: 'Example 2',
-    categry: 'Sci-Fi',
+    category: 'Sci-Fi',
   },
   {
     id: Math.floor(Math.random() * 1000),

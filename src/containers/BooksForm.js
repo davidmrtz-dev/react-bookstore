@@ -4,6 +4,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const categories = [
+  'Action',
+  'Biography',
+  'History',
+  'Horror',
+  'Kids',
+  'Learning',
+  'Sci-Fi',
+];
+
 const BooksForm = ({ books }) => (
   <form>
     <label htmlFor="title">Title</label>
@@ -11,13 +21,11 @@ const BooksForm = ({ books }) => (
     <label htmlFor="category">Category</label>
     <input list="category-list" />
     <datalist id="category-list">
-      <option value="Action" />
-      <option value="Biography" />
-      <option value="History" />
-      <option value="Horror" />
-      <option value="Kids" />
-      <option value="Learning" />
-      <option value="Sci-Fi" />
+      {categories.map(cat => (
+        <option key={cat} value={cat}>
+          {cat}
+        </option>
+      ))}
     </datalist>
     <button type="submit">Add book</button>
   </form>
