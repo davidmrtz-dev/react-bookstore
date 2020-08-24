@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const categories = [
   'Action',
@@ -14,7 +13,7 @@ const categories = [
   'Sci-Fi',
 ];
 
-const BooksForm = ({ books }) => (
+const BooksForm = () => (
   <form>
     <label htmlFor="title">Title</label>
     <input type="text" name="title" id="title" required />
@@ -32,7 +31,3 @@ const BooksForm = ({ books }) => (
 );
 
 export default BooksForm;
-
-// BooksForm.propTypes = {
-//   books: PropTypes.array.isRequired,
-// };
