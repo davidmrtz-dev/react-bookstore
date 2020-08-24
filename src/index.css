@@ -1,16 +1,75 @@
 /* eslint-disable declaration-colon-newline-after, no-console */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html,
+body,
+.root {
+  height: auto;
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body,
+header,
+main,
+aside,
+section,
+article,
+footer,
+div,
+ul,
+li,
+h1,
+h2,
+h3,
+p,
+input,
+textarea,
+#root {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Google Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+i {
+  cursor: pointer;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+input[type='text']::-ms-clear {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+input[type='text']::-ms-reveal {
+  display: none;
+  height: 0;
+  width: 0;
 }
 
 /* eslint-enable declaration-colon-newline-after, no-console */
