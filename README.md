@@ -1,68 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Redux Bookstore.
 
-## Available Scripts
+> This is simple CMS built with React and Redux.
 
-In the project directory, you can run:
+<p align="center">
+  <img src="#">
+</p>
 
-### `yarn start`
+## Built With
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Node Js
+- React
+- Redux
+- ES6
+- Webpack
+- SASS
+- Jest
+- npm
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Live Demo
 
-### `yarn test`
+- [Heroku :rocket:](#)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `yarn build`
+> Clone the repository to your local machine
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+$ git clone https://github.com/davitomix/react-bookstore
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+> cd into the directory, install dependencies, build and start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+$ cd react-bookstore
+$ npm install
+$ npm start
+```
 
-### `yarn eject`
+> Open `http://localhost:3000` using your favorite broswer, if it doesn't open automatically.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Automated Tests :space_invader:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+$ cd react-bookstore
+$ npm run test
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Authors
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+👤 **David Elí**
 
-## Learn More
+- Github: [@davitomix](https://github.com/davitomix)
+- Twitter: [@davitomix007](https://twitter.com/davitomix007)
+- Linkedin: [David Garcia](https://www.linkedin.com/in/davideligarcia/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🤝 Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions, issues and feature requests are welcome!
 
-### Code Splitting
+Feel free to check the [issues page](issues/).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Show your support
 
-### Analyzing the Bundle Size
+Give a ⭐️ if you like this project!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## 📝 License
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project is [MIT](lic.url) licensed.
