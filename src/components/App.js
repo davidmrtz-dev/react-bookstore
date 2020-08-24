@@ -1,10 +1,12 @@
 import React from 'react';
+import BookList from '../containers/BooksList';
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <BookList />
       <h1>Hello World</h1>
-    </div>
+    </>
   );
 }
 
