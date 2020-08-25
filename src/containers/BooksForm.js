@@ -4,16 +4,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createBook } from '../actions';
-
-const categories = [
-  'Action',
-  'Biography',
-  'History',
-  'Horror',
-  'Kids',
-  'Learning',
-  'Sci-Fi',
-];
+import categories from '../tools/categories';
 
 const mapStateToProps = ({ books }) => ({ books });
 const mapDispatchToProps = dispatch => ({

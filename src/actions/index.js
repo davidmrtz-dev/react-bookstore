@@ -18,7 +18,7 @@ export const removeBook = id => ({
   id,
 });
 
-export const changeFilter = filter => ({
+export const changeFilter = (filter = 'All') => ({
   type: CHANGE_FILTER,
   filter,
 });
