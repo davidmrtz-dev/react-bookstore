@@ -7,4 +7,4 @@ export default [
   'Learning',
   'Sci-Fi',
   'Classic literature',
-];
+].sort();

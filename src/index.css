@@ -72,4 +72,140 @@ input[type='text']::-ms-reveal {
   width: 0;
 }
 
+main {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+#category-filter {
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#category-filter label select {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
+h1 {
+  color: rgba(65, 154, 249, 0.99);
+}
+
+.book-list {
+  width: 100%;
+}
+
+.book-list th,
+.book-info td {
+  text-align: left;
+  padding: 1rem 0.5rem;
+}
+
+.book-info {
+  background-color: white;
+  border: solid 1px lightblue;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.75);
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 2fr auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'category isbn'
+    'title void'
+    'remove void';
+}
+
+.book-info .id {
+  grid-area: isbn;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: grey;
+}
+
+.book-info .id::before {
+  content: 'ID:';
+  font-weight: bold;
+  color: black;
+  margin-right: 0.5rem;
+}
+
+.book-info .title {
+  grid-area: title;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+}
+
+.book-info .category {
+  grid-area: category;
+  font-size: 0.6rem;
+  font-weight: bold;
+  color: grey;
+}
+
+.book-info .remove {
+  grid-area: remove;
+}
+
+.book-info .remove button {
+  border: none;
+  background: none;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: darkgray;
+  cursor: pointer;
+}
+
+#book-form {
+  width: 100%;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-form-header {
+  margin-top: 1rem;
+}
+
+input,
+select {
+  border: solid thin grey;
+  padding: 0.3rem;
+  border-radius: 3px;
+}
+
+input::placeholder {
+  color: lightgray;
+  font-size: 0.9rem;
+  padding: 0.3rem;
+}
+
+#title-input {
+  width: 50%;
+}
+
+#book-form button {
+  border: solid 2px rgba(34, 139, 251, 0.99);
+  background-color: rgba(65, 154, 249, 0.99);
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+#category-hint {
+  color: rgb(165, 165, 165);
+  font-size: 0.9rem;
+  padding: 0.3rem;
+  margin-top: 0.5rem;
+}
+
 /* eslint-enable declaration-colon-newline-after, no-console */
