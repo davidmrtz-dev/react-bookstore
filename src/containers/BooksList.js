@@ -29,5 +29,5 @@ BookList.defaultProps = {
 };
 
 BookList.propTypes = {
-  books: PropTypes.any,
+  books: PropTypes.array,
 };
