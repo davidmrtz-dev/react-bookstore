@@ -4,7 +4,7 @@ export const CHANGE_FILTER = 'CHANGE_FILTER';
 
 export const createBook = (
   book = {
-    id: Math.floor(Math.random() * 1000),
+    id: new Date().getTime(),
     title: '',
     category: '',
   },
@@ -18,7 +18,7 @@ export const removeBook = id => ({
   id,
 });
 
-export const changeFilter = (filter = 'All') => ({
+export const changeFilter = filter => ({
   type: CHANGE_FILTER,
   filter,
 });

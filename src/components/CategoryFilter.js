@@ -7,8 +7,6 @@ const Filter = ({ filter, changeFilter }) => (
     <label htmlFor="category">
       Filter
       <select
-        id="filters"
-        // value={filter}
         defaultValue={filter}
         onChange={e => changeFilter(e.target.value)}
       >

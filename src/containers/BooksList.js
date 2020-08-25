@@ -6,26 +6,39 @@ import Book from '../components/Book';
 import { removeBook, changeFilter } from '../actions';
 import CategoryFilter from '../components/CategoryFilter';
 
-const mapStateToProps = ({ books, filter }) => ({ books, filter });
+const getVisibleBooks = (books, filter) => {
+  if (filter !== 'All') {
+    const newBooks = books.filter(b => b.category === filter);
+    return newBooks;
+  }
+
+  return books;
+};
+
+const mapStateToProps = ({ books, filter }) => ({
+  books,
+  filter,
+});
 const mapDispatchToProps = dispatch => ({
   removeBook: id => dispatch(removeBook(id)),
   changeFilter: filter => dispatch(changeFilter(filter)),
 });
 
-const BookList = ({ books = [], filter, removeBook, changeFilter }) => (
-  <>
-    <CategoryFilter filter={filter} changeFilter={changeFilter} />
-    <table>
-      <thead>
-        <tr>
-          <th>Book ID</th>
-          <th>Title</th>
-          <th>Category</th>
-        </tr>
-      </thead>
-      <tbody>
-        {books &&
-          books.map(book => (
+const BookList = ({ books = [], filter, removeBook, changeFilter }) => {
+  const activeBooks = getVisibleBooks(books, filter);
+  return (
+    <>
+      <CategoryFilter filter={filter} changeFilter={changeFilter} />
+      <table>
+        <thead>
+          <tr>
+            <th>Book ID</th>
+            <th>Title</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          {activeBooks.map(book => (
             <Book
               key={book.id}
               book={book}
@@ -34,10 +47,11 @@ const BookList = ({ books = [], filter, removeBook, changeFilter }) => (
               }}
             />
           ))}
-      </tbody>
-    </table>
-  </>
-);
+        </tbody>
+      </table>
+    </>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);
 

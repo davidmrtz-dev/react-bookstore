@@ -6,4 +6,5 @@ export default [
   'Kids',
   'Learning',
   'Sci-Fi',
+  'Classic literature',
 ];
