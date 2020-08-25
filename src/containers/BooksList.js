@@ -20,8 +20,8 @@ const BookList = ({ books, removeBook }) => (
       </tr>
     </thead>
     <tbody>
-      {books &&
-        books.map(book => (
+      {books
+        && books.map(book => (
           <Book
             key={book.id}
             book={book}
