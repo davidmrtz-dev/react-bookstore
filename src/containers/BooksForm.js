@@ -56,47 +56,54 @@ const BooksForm = ({ createBook }) => {
 
   return (
     <>
-      <div className={wrapperClass}>
-        <label htmlFor="title">Title</label>
-        <div className="field">
-          <input
-            type="text"
-            name="title"
-            id="title"
-            value={book.title}
-            onChange={handleChange}
-          />
+      <h2 className="book-form-header">Add new book</h2>
+      <div id="book-form">
+        <div className={wrapperClass}>
+          <label htmlFor="title">Title</label>
+          <div className="field">
+            <input
+              type="text"
+              name="title"
+              id="title"
+              value={book.title}
+              onChange={handleChange}
+            />
+          </div>
+          {errors.title && (
+            <div className="alert alert-danger">{errors.title}</div>
+          )}
         </div>
-        {errors.title && (
-          <div className="alert alert-danger">{errors.title}</div>
-        )}
-      </div>
 
-      <div className={wrapperClass}>
-        <label htmlFor="category">Category</label>
-        <div className="field">
-          <input
-            type="text"
-            name="category"
-            list="category-list"
-            value={book.category || ''}
-            onChange={handleChange}
-          />
-          <datalist id="category-list">
-            {categories.map(cat => (
-              <option key={cat} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </datalist>
+        <div className={wrapperClass}>
+          <label htmlFor="category">Category</label>
+          <div className="field">
+            <input
+              type="text"
+              name="category"
+              list="category-list"
+              value={book.category || ''}
+              onChange={handleChange}
+            />
+            <datalist id="category-list">
+              {categories.map(cat => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </datalist>
+          </div>
+          {errors.category && (
+            <div className="alert alert-danger">{errors.category}</div>
+          )}
         </div>
-        {errors.category && (
-          <div className="alert alert-danger">{errors.category}</div>
-        )}
+        <button type="submit" onClick={handleSubmit}>
+          Add book
+        </button>
       </div>
-      <button type="submit" onClick={handleSubmit}>
-        Add book
-      </button>
+      <div id="category-hint">
+        Tip: If the category doesn&apos;t exist in the list, just type it in the
+        editor; it will be added to the categories list.
+      </div>
     </>
   );
 };
