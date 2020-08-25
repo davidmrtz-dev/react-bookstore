@@ -24,7 +24,9 @@ const mapDispatchToProps = dispatch => ({
   changeFilter: filter => dispatch(changeFilter(filter)),
 });
 
-const BookList = ({ books = [], filter, removeBook, changeFilter }) => {
+const BookList = ({
+  books = [], filter, removeBook, changeFilter,
+}) => {
   const activeBooks = getVisibleBooks(books, filter);
   return (
     <>
