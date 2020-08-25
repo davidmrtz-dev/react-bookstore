@@ -1,8 +1,7 @@
-/* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { createBook } from '../actions';
 
 const categories = [
@@ -66,6 +65,10 @@ const BooksForm = ({ createBook }) => {
       </button>
     </>
   );
+};
+
+BooksForm.propTypes = {
+  createBook: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksForm);

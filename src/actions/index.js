@@ -3,7 +3,7 @@ export const REMOVE_BOOK = 'REMOVE_BOOK';
 
 export const createBook = (
   book = {
-    id: new Date().getTime(),
+    id: Math.floor(Math.random() * 1000),
     title: 'New Book',
     category: null,
   },
