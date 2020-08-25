@@ -20,21 +20,22 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const BooksForm = ({ createBook }) => {
-  const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('');
+  const [book, setBook] = useState({
+    id: Math.floor(Math.random() * 1000),
+    title: '',
+    category: '',
+  });
 
-  const handleTitleChange = event => {
-    setTitle(event.target.value);
+  const handleChange = ({ target }) => {
+    setBook({
+      ...book,
+      [target.name]: target.value,
+    });
   };
 
-  const handleCategoryChange = event => {
-    setCategory(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    createBook({ id: new Date().getTime(), title, category });
-    setTitle('');
-    setCategory('');
+  const handleSubmit = event => {
+    event.preventDefault();
+    createBook({ id: book.id, title: book.title, category: book.category });
   };
 
   return (
@@ -44,14 +45,15 @@ const BooksForm = ({ createBook }) => {
         type="text"
         name="title"
         id="title"
-        value={title}
-        onChange={handleTitleChange}
+        value={book.title}
+        onChange={handleChange}
       />
       <label htmlFor="category">Category</label>
       <input
+        name="category"
         list="category-list"
-        value={category}
-        onChange={handleCategoryChange}
+        value={book.category || ''}
+        onChange={handleChange}
       />
       <datalist id="category-list">
         {categories.map(cat => (
