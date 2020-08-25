@@ -20,12 +20,10 @@ const Book = ({ book, handleRemoveBook }) => (
 export default Book;
 
 Book.propTypes = {
-  book: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      category: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  book: PropTypes.exact({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+  }).isRequired,
   handleRemoveBook: PropTypes.func.isRequired,
 };
