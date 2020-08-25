@@ -55,6 +55,13 @@ i {
   cursor: pointer;
 }
 
+input,
+select {
+  border: solid thin grey;
+  padding: 0.3rem;
+  border-radius: 3px;
+}
+
 textarea:focus,
 input:focus {
   outline: none;
@@ -172,13 +179,6 @@ h1 {
 
 .book-form-header {
   margin-top: 1rem;
-}
-
-input,
-select {
-  border: solid thin grey;
-  padding: 0.3rem;
-  border-radius: 3px;
 }
 
 input::placeholder {
