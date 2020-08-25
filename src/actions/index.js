@@ -1,10 +1,12 @@
+import randomId from '../tools/randomId';
+
 export const CREATE_BOOK = 'CREATE_BOOK';
 export const REMOVE_BOOK = 'REMOVE_BOOK';
 export const CHANGE_FILTER = 'CHANGE_FILTER';
 
 export const createBook = (
   book = {
-    id: new Date().getTime(),
+    id: randomId(),
     title: '',
     category: '',
   },

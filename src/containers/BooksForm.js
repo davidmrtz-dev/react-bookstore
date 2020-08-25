@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createBook } from '../actions';
 import categories from '../tools/categories';
+import randomId from '../tools/randomId';
 
 const mapStateToProps = ({ books }) => ({ books });
 const mapDispatchToProps = dispatch => ({
@@ -40,7 +41,7 @@ const BooksForm = ({ createBook }) => {
     if (!formIsValid()) return;
 
     createBook({
-      id: new Date().getTime(),
+      id: randomId(),
       title: book.title,
       category: book.category,
     });

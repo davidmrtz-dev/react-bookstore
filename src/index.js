@@ -7,20 +7,21 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import App from './components/App';
 import reducers from './reducers';
+import randomId from './tools/randomId';
 
 const exampleLib = [
   {
-    id: Math.floor(Math.random() * 1000),
+    id: randomId(),
     title: 'Example 2',
     category: 'Classic literature',
   },
   {
-    id: Math.floor(Math.random() * 1000),
+    id: randomId(),
     title: 'Example 2',
     category: 'Sci-Fi',
   },
   {
-    id: Math.floor(Math.random() * 1000),
+    id: randomId(),
     title: 'Example 3',
     category: 'Learning',
   },
