@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import filters from '../tools/categories';
 
 const Filter = ({ filter, changeFilter }) => (
-  <>
+  <div id="category-filter">
     <label htmlFor="category">
       Filter
       <select
@@ -20,7 +20,7 @@ const Filter = ({ filter, changeFilter }) => (
         ))}
       </select>
     </label>
-  </>
+  </div>
 );
 
 export default Filter;
