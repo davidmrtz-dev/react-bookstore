@@ -12,17 +12,17 @@ import randomId from './tools/randomId';
 const exampleLib = [
   {
     id: randomId(),
-    title: 'Example 2',
+    title: 'Odyssey',
     category: 'Classic literature',
   },
   {
     id: randomId(),
-    title: 'Example 2',
+    title: 'I, Robot',
     category: 'Sci-Fi',
   },
   {
     id: randomId(),
-    title: 'Example 3',
+    title: 'Learning Python',
     category: 'Learning',
   },
 ];
