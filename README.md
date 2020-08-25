@@ -19,7 +19,7 @@
 
 ## Live Demo
 
-- [Heroku :rocket:](#)
+- [Heroku :rocket:](https://bookstore-mx.herokuapp.com)
 
 ## Usage
 
