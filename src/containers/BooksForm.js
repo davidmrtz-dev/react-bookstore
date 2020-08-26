@@ -23,7 +23,6 @@ const mapDispatchToProps = dispatch => ({
 const BooksForm = ({ createBook }) => {
   const [errors, setErrors] = useState({});
   const [book, setBook] = useState({
-    id: Math.floor(Math.random() * 1000),
     title: '',
     category: '',
   });
@@ -48,8 +47,11 @@ const BooksForm = ({ createBook }) => {
   const handleSubmit = event => {
     event.preventDefault();
     if (!formIsValid()) return;
-
-    createBook({ id: book.id, title: book.title, category: book.category });
+    createBook({
+      id: Math.floor(Math.random() * 1000),
+      title: book.title,
+      category: book.category,
+    });
     book.title = '';
     book.category = '';
   };
