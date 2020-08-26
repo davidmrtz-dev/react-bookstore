@@ -1,3 +1,28 @@
+#category-filter {
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  label {
+    padding-right: 5%;
+    select {
+      margin-left: 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+h1 {
+  color: rgba(65, 154, 249, 0.99);
+}
+
+#category-hint {
+  color: rgb(165, 165, 165);
+  font-size: 0.9rem;
+  padding: 0.3rem;
+  margin-top: 0.5rem;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
 
 @mixin button-style {
@@ -202,7 +227,7 @@ body {
         margin-top: auto;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        color: #ffffff;
+        color: #fff;
         cursor: pointer;
       }
     }
@@ -219,6 +244,74 @@ body {
     .update-btn:hover {
       @include button-style-hover;
     }
+  }
+}
+
+.form-container {
+  padding: 0 100px;
+  padding-bottom: 40px;
+
+  .line {
+    height: 0;
+    margin: 32px 0;
+    border: solid 1px #e8e8e877;
+  }
+
+  h2 {
+    text-align: center;
+    letter-spacing: -0.18px;
+    color: #888;
+    margin-bottom: 8px;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+
+    div {
+      .book-input {
+        border-radius: 0.2em;
+        border: 1px solid #d3d3d3;
+        box-sizing: border-box;
+        font-size: 1rem;
+        height: 40px;
+        margin-top: 24px;
+        padding: 6px 12px;
+        flex-basis: 45%;
+      }
+
+      .category-select {
+        background-color: transparent;
+        box-sizing: border-box;
+        border-radius: 0.2em;
+        height: 40px;
+        opacity: 0.5;
+        margin-top: 24px;
+        padding: 6px 12px;
+        font-size: 1rem;
+        flex-basis: 45%;
+      }
+    }
+  }
+
+  .submit-button {
+    @include button-style;
+
+    font-size: 1rem;
+    font-weight: 700;
+    align-self: center;
+    margin: 24px auto 0;
+    padding: 12px 16px;
+    transition: $default-transition;
+  }
+
+  .submit-button:hover {
+    @include button-style-hover;
   }
 }
 
