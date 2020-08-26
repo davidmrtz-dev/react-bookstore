@@ -24,6 +24,7 @@ Book.propTypes = {
   book: PropTypes.exact({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
   }).isRequired,
   handleRemoveBook: PropTypes.func.isRequired,
