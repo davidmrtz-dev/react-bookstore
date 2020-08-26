@@ -52,8 +52,10 @@ const BooksForm = ({ createBook }) => {
       title: book.title,
       category: book.category,
     });
-    book.title = '';
-    book.category = '';
+    setBook({
+      title: '',
+      category: '',
+    });
   };
 
   let wrapperClass = 'form-group';
