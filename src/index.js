@@ -12,16 +12,19 @@ import randomId from './tools/randomId';
 const exampleLib = [
   {
     id: randomId(),
+    author: 'Homer',
     title: 'Odyssey',
     category: 'Classic literature',
   },
   {
     id: randomId(),
+    author: 'Isaac Asimov',
     title: 'I, Robot',
     category: 'Sci-Fi',
   },
   {
     id: randomId(),
+    author: 'David Garcia',
     title: 'Learning Python',
     category: 'Learning',
   },

@@ -1,16 +1,8 @@
-import randomId from '../tools/randomId';
-
 export const CREATE_BOOK = 'CREATE_BOOK';
 export const REMOVE_BOOK = 'REMOVE_BOOK';
 export const CHANGE_FILTER = 'CHANGE_FILTER';
 
-export const createBook = (
-  book = {
-    id: randomId(),
-    title: '',
-    category: '',
-  },
-) => ({
+export const createBook = book => ({
   type: CREATE_BOOK,
   book,
 });
