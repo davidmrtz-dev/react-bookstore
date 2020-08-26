@@ -15,23 +15,33 @@ const exampleLib = [
     author: 'Homer',
     title: 'Odyssey',
     category: 'Classic literature',
+    pages: '200',
+    progress: '1',
   },
   {
     id: randomId(),
     author: 'Isaac Asimov',
     title: 'I, Robot',
     category: 'Sci-Fi',
+    pages: '200',
+    progress: '1',
   },
   {
     id: randomId(),
     author: 'David Garcia',
     title: 'Learning Python',
     category: 'Learning',
+    pages: '200',
+    progress: '1',
   },
 ];
 
 const store = createStore(
   reducers,
+  {
+    books: exampleLib,
+    filter: 'All',
+  },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), // eslint-disable-line
 );
 

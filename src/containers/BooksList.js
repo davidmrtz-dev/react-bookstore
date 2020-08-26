@@ -24,26 +24,25 @@ const mapDispatchToProps = dispatch => ({
   changeFilter: filter => dispatch(changeFilter(filter)),
 });
 
-const BookList = ({
-  books = [], filter, removeBook, changeFilter,
-}) => {
+const BookList = ({ books = [], filter, removeBook, changeFilter }) => {
   const activeBooks = getVisibleBooks(books, filter);
   return (
     <>
+      <div>
+        <h1 className="bookstore-title">Bookstore CMS</h1>
+      </div>
       <CategoryFilter filter={filter} changeFilter={changeFilter} />
-      <table className="book-list">
-        <tbody>
-          {activeBooks.map(book => (
-            <Book
-              key={book.id}
-              book={book}
-              handleRemoveBook={() => {
-                removeBook(book.id);
-              }}
-            />
-          ))}
-        </tbody>
-      </table>
+      <div className="book-list">
+        {activeBooks.map(book => (
+          <Book
+            key={book.id}
+            book={book}
+            handleRemoveBook={() => {
+              removeBook(book.id);
+            }}
+          />
+        ))}
+      </div>
     </>
   );
 };
