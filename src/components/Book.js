@@ -3,7 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Book = ({ book, handleRemoveBook }) => {
-  const { id, title, category, author, pages, progress } = book;
+  const {
+    title, category, author, pages, progress,
+  } = book;
   const updateForm = false;
   const displayNone = updateForm ? { display: 'flex' } : { display: 'none' };
   return (
