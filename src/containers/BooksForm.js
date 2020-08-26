@@ -16,6 +16,7 @@ const BooksForm = ({ createBook }) => {
   const [errors, setErrors] = useState({});
   const [book, setBook] = useState({
     title: '',
+    author: '',
     category: '',
   });
 
@@ -30,6 +31,7 @@ const BooksForm = ({ createBook }) => {
     const _errors = {};
 
     if (!book.title) _errors.title = 'Title is required';
+    if (!book.author) _errors.author = 'Author is required';
     if (!book.category) _errors.category = 'Category is required';
 
     setErrors(_errors);
@@ -42,11 +44,13 @@ const BooksForm = ({ createBook }) => {
 
     createBook({
       id: randomId(),
+      author: book.author,
       title: book.title,
       category: book.category,
     });
     setBook({
       title: '',
+      author: '',
       category: '',
     });
   };
@@ -73,6 +77,22 @@ const BooksForm = ({ createBook }) => {
           </div>
           {errors.title && (
             <div className="alert alert-danger">{errors.title}</div>
+          )}
+        </div>
+
+        <div className={wrapperClass}>
+          <label htmlFor="author">Author</label>
+          <div className="field">
+            <input
+              type="text"
+              name="author"
+              id="author"
+              value={book.author}
+              onChange={handleChange}
+            />
+          </div>
+          {errors.author && (
+            <div className="alert alert-danger">{errors.author}</div>
           )}
         </div>
 
