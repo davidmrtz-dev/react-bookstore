@@ -18,6 +18,7 @@ const BooksForm = ({ createBook }) => {
     title: '',
     author: '',
     category: '',
+    pages: '',
   });
 
   const handleChange = ({ target }) => {
@@ -33,6 +34,7 @@ const BooksForm = ({ createBook }) => {
     if (!book.title) _errors.title = 'Title is required';
     if (!book.author) _errors.author = 'Author is required';
     if (!book.category) _errors.category = 'Category is required';
+    if (!book.pages) _errors.pages = 'Number of pages is required';
 
     setErrors(_errors);
     return Object.keys(_errors).length === 0;
@@ -44,14 +46,14 @@ const BooksForm = ({ createBook }) => {
 
     createBook({
       id: randomId(),
-      author: book.author,
-      title: book.title,
-      category: book.category,
+      ...book,
+      progress: '1',
     });
     setBook({
       title: '',
       author: '',
       category: '',
+      pages: '',
     });
   };
 
@@ -93,6 +95,22 @@ const BooksForm = ({ createBook }) => {
           </div>
           {errors.author && (
             <div className="alert alert-danger">{errors.author}</div>
+          )}
+        </div>
+
+        <div className={wrapperClass}>
+          <label htmlFor="pages">Pages</label>
+          <div className="field">
+            <input
+              type="number"
+              name="pages"
+              id="pages"
+              value={book.pages}
+              onChange={handleChange}
+            />
+          </div>
+          {errors.pages && (
+            <div className="alert alert-danger">{errors.pages}</div>
           )}
         </div>
 
