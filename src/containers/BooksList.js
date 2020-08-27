@@ -1,9 +1,9 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
-import { removeBook, changeFilter } from '../actions';
+import { removeBook, changeFilter, updateBookProgress } from '../actions';
 import CategoryFilter from '../components/CategoryFilter';
 
 const getVisibleBooks = (books, filter) => {
@@ -22,12 +22,36 @@ const mapStateToProps = ({ books, filter }) => ({
 const mapDispatchToProps = dispatch => ({
   removeBook: id => dispatch(removeBook(id)),
   changeFilter: filter => dispatch(changeFilter(filter)),
+  updateBookProgress: (id, progress) =>
+    dispatch(updateBookProgress(id, progress)),
 });
 
 const BookList = ({
-  books = [], filter, removeBook, changeFilter,
+  books = [],
+  filter,
+  removeBook,
+  changeFilter,
+  updateBookProgress,
 }) => {
+  const [book, setBook] = useState({
+    id: '',
+    progress: '',
+  });
   const activeBooks = getVisibleBooks(books, filter);
+
+  const handleChangeProgress = ({ target }) => {
+    setBook({
+      ...book,
+      id: target.id,
+      progress: target.value,
+    });
+  };
+
+  const handleUpdateSubmit = event => {
+    event.preventDefault();
+    updateBookProgress(book.id, book.progress);
+  };
+
   return (
     <>
       <div>
@@ -37,11 +61,13 @@ const BookList = ({
       <div className="book-list">
         {activeBooks.map(book => (
           <Book
-            key={book.id}
+            key={book.title}
             book={book}
             handleRemoveBook={() => {
               removeBook(book.id);
             }}
+            onUpdateProgress={handleUpdateSubmit}
+            onChangeProgress={handleChangeProgress}
           />
         ))}
       </div>
@@ -60,4 +86,5 @@ BookList.propTypes = {
   removeBook: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
   changeFilter: PropTypes.func.isRequired,
+  updateBookProgress: PropTypes.func.isRequired,
 };

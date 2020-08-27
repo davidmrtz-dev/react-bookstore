@@ -14,7 +14,6 @@ const book = (state, action) => {
       if (state.id !== action.id) {
         return state;
       }
-
       return {
         ...state,
         progress: action.progress,

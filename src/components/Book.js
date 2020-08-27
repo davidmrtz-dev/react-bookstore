@@ -2,8 +2,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Book = ({ book, handleRemoveBook, handleUpdateProgress }) => {
-  const { title, category, author, pages, progress } = book;
+const Book = ({
+  book,
+  handleRemoveBook,
+  onUpdateProgress,
+  onChangeProgress,
+}) => {
+  const { id, title, category, author, pages, progress } = book;
   const [updateForm, toggleForm] = useState(false);
   const displayNone = updateForm ? { display: 'flex' } : { display: 'none' };
 
@@ -49,9 +54,17 @@ const Book = ({ book, handleRemoveBook, handleUpdateProgress }) => {
         <form
           style={displayNone}
           className="update-page"
-          onSubmit={handleUpdateProgress}
+          onSubmit={onUpdateProgress}
         >
-          <input type="number" placeholder="pages" min="1" max={pages} />
+          <input
+            id={id}
+            name="progress"
+            type="number"
+            placeholder="pages"
+            min="1"
+            max={pages}
+            onChange={onChangeProgress}
+          />
           <button type="submit">Update</button>
         </form>
         <button
@@ -70,7 +83,7 @@ export default Book;
 
 Book.propTypes = {
   book: PropTypes.exact({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
@@ -78,5 +91,6 @@ Book.propTypes = {
     progress: PropTypes.string.isRequired,
   }).isRequired,
   handleRemoveBook: PropTypes.func.isRequired,
-  handleUpdateProgress: PropTypes.func.isRequired,
+  onUpdateProgress: PropTypes.func.isRequired,
+  onChangeProgress: PropTypes.func.isRequired,
 };
