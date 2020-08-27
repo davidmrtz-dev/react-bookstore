@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Book = ({ book, handleRemoveBook }) => {
+const Book = ({ book, handleRemoveBook, handleUpdateProgress }) => {
   const { title, category, author, pages, progress } = book;
   const [updateForm, toggleForm] = useState(false);
   const displayNone = updateForm ? { display: 'flex' } : { display: 'none' };
@@ -46,7 +46,11 @@ const Book = ({ book, handleRemoveBook }) => {
       <div className="update-progress">
         <span className="page-label">Current page</span>
         <span className="page">{`Page ${progress} of ${pages}`}</span>
-        <form style={displayNone} className="update-page">
+        <form
+          style={displayNone}
+          className="update-page"
+          onSubmit={handleUpdateProgress}
+        >
           <input type="number" placeholder="pages" min="1" max={pages} />
           <button type="submit">Update</button>
         </form>
@@ -74,4 +78,5 @@ Book.propTypes = {
     progress: PropTypes.string.isRequired,
   }).isRequired,
   handleRemoveBook: PropTypes.func.isRequired,
+  handleUpdateProgress: PropTypes.func.isRequired,
 };
