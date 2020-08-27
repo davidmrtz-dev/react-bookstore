@@ -67,6 +67,7 @@ const Book = ({
           />
           <button type="submit">Update</button>
         </form>
+        {/* ---------------------------- */}
         <button
           onClick={() => toggleForm(!updateForm)}
           className="update-btn"
@@ -74,6 +75,7 @@ const Book = ({
         >
           Update progress
         </button>
+        {/* ---------------------------- */}
       </div>
     </div>
   );
