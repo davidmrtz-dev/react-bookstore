@@ -22,8 +22,7 @@ const mapStateToProps = ({ books, filter }) => ({
 const mapDispatchToProps = dispatch => ({
   removeBook: id => dispatch(removeBook(id)),
   changeFilter: filter => dispatch(changeFilter(filter)),
-  updateBookProgress: (id, progress) =>
-    dispatch(updateBookProgress(id, progress)),
+  updateBookProgress: (id, progress) => dispatch(updateBookProgress(id, progress)),
 });
 
 const BookList = ({

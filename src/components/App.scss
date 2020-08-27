@@ -93,7 +93,7 @@ body {
   border: solid 1px #e8e8e8;
   justify-content: space-between;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: #fff;
   display: flex;
   flex-wrap: nowrap;
   margin: 8px 100px;
@@ -213,7 +213,7 @@ body {
 
     .page {
       margin-top: 8px;
-      font-family: RobotoSlab;
+      font-family: 'Roboto Slab', serif;
       font-size: 1rem;
       color: #121212;
     }
@@ -242,13 +242,14 @@ body {
         margin-top: auto;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        color: #ffffff;
+        color: #fff;
         cursor: pointer;
       }
     }
 
     .update-btn {
       @include button-style;
+
       margin-top: auto;
       text-transform: uppercase;
       padding: 8px 22px;
