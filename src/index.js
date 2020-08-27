@@ -19,11 +19,19 @@ const exampleLib = [
   },
   {
     id: randomId(),
+    author: 'Ernest Cline',
+    title: 'Ready Player One',
+    category: 'Sci-Fi',
+    pages: '200',
+    progress: '200',
+  },
+  {
+    id: randomId(),
     author: 'Isaac Asimov',
     title: 'I, Robot',
     category: 'Sci-Fi',
     pages: '200',
-    progress: '50',
+    progress: '10',
   },
   {
     id: randomId(),
