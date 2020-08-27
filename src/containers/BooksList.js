@@ -49,7 +49,7 @@ const BookList = ({
 
   const handleUpdateSubmit = event => {
     event.preventDefault();
-    updateBookProgress(book.id, book.progress);
+    updateBookProgress(book.id, parseInt(book.progress, 10).toString());
   };
 
   return (

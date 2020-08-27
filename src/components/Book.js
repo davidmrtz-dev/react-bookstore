@@ -9,8 +9,15 @@ const Book = ({
   onChangeProgress,
 }) => {
   const { id, title, category, author, pages, progress } = book;
-  const [updateForm, toggleForm] = useState(false);
-  const displayNone = updateForm ? { display: 'flex' } : { display: 'none' };
+  const [displayUpdateForm, toggle] = useState(false);
+  const displayForm = displayUpdateForm
+    ? { display: 'flex' }
+    : { display: 'none' };
+
+  const updateProgressHandler = e => {
+    toggle(!displayUpdateForm);
+    onUpdateProgress(e, id, progress);
+  };
 
   return (
     <div className="book-container">
@@ -52,9 +59,9 @@ const Book = ({
         <span className="page-label">Current page</span>
         <span className="page">{`Page ${progress} of ${pages}`}</span>
         <form
-          style={displayNone}
+          style={displayForm}
           className="update-page"
-          onSubmit={onUpdateProgress}
+          onSubmit={updateProgressHandler}
         >
           <input
             id={id}
@@ -69,7 +76,7 @@ const Book = ({
         </form>
         {/* ---------------------------- */}
         <button
-          onClick={() => toggleForm(!updateForm)}
+          onClick={() => toggle(!displayUpdateForm)}
           className="update-btn"
           type="button"
         >
