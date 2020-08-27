@@ -44,10 +44,15 @@ const exampleLib = [
   },
 ];
 
+const exampleRefactored = {
+  loading: false,
+  booksList: exampleLib,
+};
+
 const store = createStore(
   reducers,
   {
-    books: exampleLib,
+    books: exampleRefactored,
     filter: 'All',
   },
   composeWithDevTools(),

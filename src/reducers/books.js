@@ -1,14 +1,13 @@
-import {
-  CREATE_BOOK,
-  REMOVE_BOOK,
-  UPDATE_BOOK_PROGRESS,
-} from '../actions/index';
+import { bookActionsNames } from '../actions/index';
+
+const { CREATE_BOOK, REMOVE_BOOK, UPDATE_BOOK_PROGRESS } = bookActionsNames;
 
 const book = (state, action) => {
   switch (action.type) {
     case CREATE_BOOK:
       return {
         ...action.book,
+        progress: 1,
       };
     case UPDATE_BOOK_PROGRESS:
       if (state.id !== action.id) {
@@ -23,10 +22,19 @@ const book = (state, action) => {
   }
 };
 
-const books = (state = [], action) => {
+const defaultState = () => ({
+  loading: false,
+  booksList: [],
+});
+
+const books = (state = defaultState, action) => {
   switch (action.type) {
     case CREATE_BOOK:
-      return [...state, book(undefined, action)];
+      // return [...state, book(undefined, action)];
+      return {
+        ...state,
+        booksList: [...state.booksList, book(undefined, action)],
+      };
     case UPDATE_BOOK_PROGRESS:
       return state.map(b => book(b, action));
     case REMOVE_BOOK:

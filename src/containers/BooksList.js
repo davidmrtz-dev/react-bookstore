@@ -22,21 +22,23 @@ const mapStateToProps = ({ books, filter }) => ({
 const mapDispatchToProps = dispatch => ({
   removeBook: id => dispatch(removeBook(id)),
   changeFilter: filter => dispatch(changeFilter(filter)),
-  updateBookProgress: (id, progress) => dispatch(updateBookProgress(id, progress)),
+  updateBookProgress: (id, progress) =>
+    dispatch(updateBookProgress(id, progress)),
 });
 
 const BookList = ({
-  books = [],
+  books = {},
   filter,
   removeBook,
   changeFilter,
   updateBookProgress,
 }) => {
+  const { booksList } = books;
   const [book, setBook] = useState({
     id: '',
     progress: '',
   });
-  const activeBooks = getVisibleBooks(books, filter);
+  const activeBooks = getVisibleBooks(booksList, filter);
 
   const handleChangeProgress = ({ target }) => {
     setBook({
@@ -76,12 +78,11 @@ const BookList = ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);
 
-BookList.defaultProps = {
-  books: [],
-};
-
 BookList.propTypes = {
-  books: PropTypes.arrayOf(PropTypes.object),
+  books: PropTypes.exact({
+    loading: PropTypes.bool,
+    bookList: PropTypes.array,
+  }).isRequired,
   removeBook: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
   changeFilter: PropTypes.func.isRequired,
