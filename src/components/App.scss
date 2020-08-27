@@ -56,6 +56,17 @@ body {
   max-width: 1650px;
 }
 
+.loader {
+  animation: spin 800ms linear infinite;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 60px;
+  text-align: center;
+  margin: 100px auto;
+  height: 60px;
+}
+
 .bookstore-title {
   padding-top: 10px;
 }
@@ -73,12 +84,13 @@ body {
 }
 
 .book-container {
+  animation: appear 500ms forwards linear;
   height: 170px;
   border-radius: 4px;
   border: solid 1px #e8e8e8;
   justify-content: space-between;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: #ffffff;
   display: flex;
   flex-wrap: nowrap;
   margin: 8px 100px;
@@ -198,7 +210,7 @@ body {
 
     .page {
       margin-top: 8px;
-      font-family: 'Roboto Slab', serif;
+      font-family: RobotoSlab;
       font-size: 1rem;
       color: #121212;
     }
@@ -227,14 +239,13 @@ body {
         margin-top: auto;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        color: #fff;
+        color: #ffffff;
         cursor: pointer;
       }
     }
 
     .update-btn {
       @include button-style;
-
       margin-top: auto;
       text-transform: uppercase;
       padding: 8px 22px;
@@ -312,6 +323,44 @@ body {
 
   .submit-button:hover {
     @include button-style-hover;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  90% {
+    transform: scale(1.035);
+  }
+  100% {
+    // opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fill-progress {
+  from {
+    stroke-dashoffset: 189;
+  }
+}
+
+@keyframes fill-progress-update {
+  from {
+    stroke-dashoffset: initial;
   }
 }
 
