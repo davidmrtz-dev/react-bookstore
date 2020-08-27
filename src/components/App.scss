@@ -82,6 +82,9 @@ body {
   margin: 0 32px;
   width: 2px;
 }
+.book-disappear {
+  animation: disappear 500ms forwards linear !important;
+}
 
 .book-container {
   animation: appear 500ms forwards linear;
@@ -329,16 +332,24 @@ body {
 @keyframes appear {
   0% {
     opacity: 0;
+    transform: scale(0);
   }
-  60% {
+  75% {
+    transform: scale(1.065);
+  }
+  100% {
     opacity: 1;
+    transform: scale(1);
   }
-  90% {
+}
+
+@keyframes disappear {
+  25% {
     transform: scale(1.035);
   }
   100% {
-    // opacity: 1;
-    transform: scale(1);
+    opacity: 0;
+    transform: scale(0);
   }
 }
 
@@ -349,12 +360,6 @@ body {
 
   100% {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes fill-progress {
-  from {
-    stroke-dashoffset: 189;
   }
 }
 

@@ -10,24 +10,38 @@ const Book = ({
 }) => {
   const { id, title, category, author, pages, progress } = book;
   const [displayUpdateForm, toggle] = useState(false);
+  const [deleteAnimClass, toggleDeleteAnim] = useState('');
   const displayForm = displayUpdateForm
     ? { display: 'flex' }
     : { display: 'none' };
 
   const percentCompleted = Math.floor((progress / pages) * 100);
   const progressPercent = Math.round((1 - progress / pages) * 189);
-  const progressStyle = {
-    stroke: percentCompleted === 100 ? '#32A745' : '#3481c9',
-    strokeDashoffset: `${progressPercent}`,
-  };
+  const strokeColor = percentCompleted === 100 ? '#32A745' : '#3481c9';
+  const progressStyles = { transition: 'stroke-dashoffset 500ms linear' };
 
   const updateProgressHandler = e => {
     toggle(!displayUpdateForm);
     onUpdateProgress(e, id, progress);
   };
 
+  const animationEnded = e => {
+    const { animationName } = e;
+
+    switch (animationName) {
+      case 'disappear':
+        handleRemoveBook(id);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
-    <div className="book-container">
+    <div
+      className={`book-container ${deleteAnimClass}`}
+      onAnimationEnd={e => animationEnded(e)}
+    >
       <div className="book-info">
         <header>
           <span className="category">{category}</span>
@@ -43,7 +57,7 @@ const Book = ({
           <span className="divider" />
           <button
             className="book-button"
-            onClick={handleRemoveBook}
+            onClick={() => toggleDeleteAnim('book-disappear')}
             type="button"
           >
             Remove
@@ -55,7 +69,10 @@ const Book = ({
         <svg>
           <circle className="progress-circle" cx="30" cy="30" r="30" />
           <circle
-            style={progressStyle}
+            stroke={strokeColor}
+            strokeDashoffset={progressPercent}
+            style={progressStyles}
+            onAnimationEnd={e => animationEnded(e)}
             className="progress-circle"
             cx="30"
             cy="30"
