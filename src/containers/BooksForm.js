@@ -139,10 +139,6 @@ const BooksForm = ({ createBook }) => {
       <button className="submit-button" type="submit" onClick={handleSubmit}>
         Add Book
       </button>
-      <div id="category-hint">
-        Tip: If the category doesn&apos;t exist in the list, just type it in the
-        editor; it will be added to the categories list.
-      </div>
     </div>
   );
 };
