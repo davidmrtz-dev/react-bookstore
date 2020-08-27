@@ -8,9 +8,7 @@ const Book = ({
   onUpdateProgress,
   onChangeProgress,
 }) => {
-  const {
-    id, title, category, author, pages, progress,
-  } = book;
+  const { id, title, category, author, pages, progress } = book;
   const [displayUpdateForm, toggle] = useState(false);
   const [deleteAnimClass, toggleDeleteAnim] = useState('');
   const displayForm = displayUpdateForm
@@ -106,6 +104,7 @@ const Book = ({
             min="1"
             max={pages}
             onChange={onChangeProgress}
+            required
           />
           <button type="submit">Update</button>
         </form>
