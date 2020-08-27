@@ -1,13 +1,12 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Book = ({ book, handleRemoveBook }) => {
-  const {
-    title, category, author, pages, progress,
-  } = book;
-  const updateForm = false;
+  const { title, category, author, pages, progress } = book;
+  const [updateForm, toggleForm] = useState(false);
   const displayNone = updateForm ? { display: 'flex' } : { display: 'none' };
+
   return (
     <div className="book-container">
       <div className="book-info">
@@ -51,7 +50,11 @@ const Book = ({ book, handleRemoveBook }) => {
           <input type="number" placeholder="pages" min="1" max={pages} />
           <button type="submit">Update</button>
         </form>
-        <button className="update-btn" type="button">
+        <button
+          onClick={() => toggleForm(!updateForm)}
+          className="update-btn"
+          type="button"
+        >
           Update progress
         </button>
       </div>
