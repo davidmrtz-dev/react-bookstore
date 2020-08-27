@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './components/App';
 import reducers from './reducers';
 import randomId from './tools/randomId';
@@ -49,7 +50,7 @@ const store = createStore(
     books: exampleLib,
     filter: 'All',
   },
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), // eslint-disable-line
+  composeWithDevTools(),
 );
 
 ReactDOM.render(
