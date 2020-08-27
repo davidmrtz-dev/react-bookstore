@@ -14,6 +14,13 @@ const Book = ({
     ? { display: 'flex' }
     : { display: 'none' };
 
+  const percentCompleted = Math.floor((progress / pages) * 100);
+  const progressPercent = Math.round((1 - progress / pages) * 189);
+  const progressStyle = {
+    stroke: percentCompleted === 100 ? '#32A745' : '#3481c9',
+    strokeDashoffset: `${progressPercent}`,
+  };
+
   const updateProgressHandler = e => {
     toggle(!displayUpdateForm);
     onUpdateProgress(e, id, progress);
@@ -47,10 +54,19 @@ const Book = ({
       <div className="display-progress">
         <svg>
           <circle className="progress-circle" cx="30" cy="30" r="30" />
-          <circle className="progress-circle" cx="30" cy="30" r="30" />
+          <circle
+            style={progressStyle}
+            className="progress-circle"
+            cx="30"
+            cy="30"
+            r="30"
+          />
         </svg>
         <div className="percent-container">
-          <span className="number">1 &#37;</span>
+          <span className="number">
+            {percentCompleted}
+            &#37;
+          </span>
           <span className="completed">Completed</span>
         </div>
       </div>

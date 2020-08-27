@@ -15,7 +15,7 @@ const exampleLib = [
     title: 'Odyssey',
     category: 'Classic literature',
     pages: '200',
-    progress: '1',
+    progress: '100',
   },
   {
     id: randomId(),
@@ -23,7 +23,7 @@ const exampleLib = [
     title: 'I, Robot',
     category: 'Sci-Fi',
     pages: '200',
-    progress: '1',
+    progress: '50',
   },
   {
     id: randomId(),
@@ -31,7 +31,7 @@ const exampleLib = [
     title: 'Learning Python',
     category: 'Learning',
     pages: '200',
-    progress: '1',
+    progress: '76',
   },
 ];
 
