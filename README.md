@@ -3,7 +3,7 @@
 > This is simple CMS built with React and Redux.
 
 <p align="center">
-  <img src="./cms_main.gif">
+  <img src="./cms_mainok.gif">
 </p>
 
 ## Built With
