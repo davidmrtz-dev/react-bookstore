@@ -10,7 +10,7 @@ import reducers from './reducers';
 import booksMiddleware from './middlewares/booksMiddleware';
 import randomId from './tools/randomId';
 
-const exampleLib = [
+const exampleLibFilled = [
   {
     id: randomId(),
     author: 'Homer',
@@ -45,9 +45,11 @@ const exampleLib = [
   },
 ];
 
+const exampleLibVoid = [];
+
 const exampleRefactored = {
   loading: false,
-  booksList: exampleLib,
+  booksList: exampleLibVoid,
 };
 
 const store = createStore(
