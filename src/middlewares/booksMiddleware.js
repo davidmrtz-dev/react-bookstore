@@ -2,7 +2,11 @@ import { bookActionsNames, bookActions } from '../actions';
 import api from '../api/api';
 
 const booksMiddleware = store => next => async action => {
-  const { FETCH_BOOK_DATA, REMOVE_BOOK } = bookActionsNames;
+  const {
+    FETCH_BOOK_DATA,
+    REMOVE_BOOK,
+    UPDATE_BOOK_PROGRESS,
+  } = bookActionsNames;
 
   const { addBookData } = bookActions;
 
@@ -21,19 +25,32 @@ const booksMiddleware = store => next => async action => {
       break;
     }
 
-    // case REMOVE_BOOK: {
-    //   next(action);
+    case REMOVE_BOOK: {
+      next(action);
 
-    //   const { id } = action;
+      const { id } = action;
 
-    //   try {
-    //     await api.delete(`/books/${id}`);
-    //   } catch (error) {
-    //     throw new Error(error);
-    //   }
+      try {
+        await api.delete(`/books/${id}`);
+      } catch (error) {
+        throw new Error(error);
+      }
 
-    //   break;
-    // }
+      break;
+    }
+
+    case UPDATE_BOOK_PROGRESS: {
+      next(action);
+      const { id, progress } = action;
+
+      try {
+        await api.put(`/books/${id}`, { progress });
+      } catch (error) {
+        throw new Error(error);
+      }
+
+      break;
+    }
 
     default:
       next(action);
