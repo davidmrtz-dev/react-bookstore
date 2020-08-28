@@ -24,8 +24,7 @@ const mapDispatchToProps = dispatch => ({
   fetchBookData: () => dispatch(fetchBookData()),
   removeBook: id => dispatch(removeBook(id)),
   changeFilter: filter => dispatch(changeFilter(filter)),
-  updateBookProgress: (id, progress) =>
-    dispatch(updateBookProgress(id, progress)),
+  updateBookProgress: (id, progress) => dispatch(updateBookProgress(id, progress)),
 });
 
 const BookList = ({
