@@ -109,6 +109,7 @@ const BooksForm = ({ createBook }) => {
             placeholder="Number of pages"
             type="number"
             name="pages"
+            min="1"
             id="pages"
             value={book.pages}
             onChange={handleChange}

@@ -24,7 +24,8 @@ const mapDispatchToProps = dispatch => ({
   fetchBookData: () => dispatch(fetchBookData()),
   removeBook: id => dispatch(removeBook(id)),
   changeFilter: filter => dispatch(changeFilter(filter)),
-  updateBookProgress: (id, progress) => dispatch(updateBookProgress(id, progress)),
+  updateBookProgress: (id, progress) =>
+    dispatch(updateBookProgress(id, progress)),
 });
 
 const BookList = ({
@@ -39,7 +40,7 @@ const BookList = ({
 
   const handleRemoveBook = id => {
     removeBook(id);
-    // setBookList(booksList);
+    //debugger;
   };
 
   const handleUpdateProgress = (e, id, progress) => {
@@ -51,16 +52,15 @@ const BookList = ({
     if (booksList.length === 0) {
       fetchBookData();
     }
-  }, []);
+  }, [booksList, fetchBookData]);
 
-  // debugger;
   const _books = booksList.reduce((result, e) => {
     if (filter === 'All' || e.category === filter) {
       result.push(
         <Book
           book={{
             ...e,
-            id: e.id.toString(),
+            id: parseInt(e.id, 10),
             progress: e.progress.toString(),
           }}
           updateProgress={handleUpdateProgress}

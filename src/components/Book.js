@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Book = ({ book, removeBook, updateProgress }) => {
-  const {
-    id, title, category, author, pages, progress,
-  } = book;
+  const { id, title, category, author, pages, progress } = book;
   const [displayUpdateForm, toggle] = useState(false);
   const [deleteAnimClass, toggleDeleteAnim] = useState('');
   const [inputProgress, inputProgressUpdate] = useState(book.progress);
@@ -28,7 +26,8 @@ const Book = ({ book, removeBook, updateProgress }) => {
 
     switch (animationName) {
       case 'disappear':
-        removeBook(id);
+        removeBook(book.id);
+        // debugger;
         break;
       default:
         break;
@@ -123,7 +122,7 @@ export default Book;
 
 Book.propTypes = {
   book: PropTypes.exact({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
