@@ -39,7 +39,6 @@ const BookList = ({
 
   const handleRemoveBook = id => {
     removeBook(id);
-    // setBookList(booksList);
   };
 
   const handleUpdateProgress = (e, id, progress) => {
@@ -53,7 +52,6 @@ const BookList = ({
     }
   }, []);
 
-  // debugger;
   const _books = booksList.reduce((result, e) => {
     if (filter === 'All' || e.category === filter) {
       result.push(
