@@ -56,7 +56,7 @@ class BookList extends React.Component {
     const { booksList, loading } = books;
     const { filter } = this.props;
     // debugger;
-    const bookies = booksList.reduce((result, e) => {
+    const _books = booksList.reduce((result, e) => {
       if (filter === 'All' || e.category === filter) {
         result.push(
           <Book
@@ -84,7 +84,7 @@ class BookList extends React.Component {
         />
         <div className="book-list">
           {loading && <Loader />}
-          {bookies}
+          {_books}
         </div>
       </>
     );

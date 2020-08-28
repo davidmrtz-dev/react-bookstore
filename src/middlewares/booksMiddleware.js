@@ -15,7 +15,7 @@ const booksMiddleware = store => next => async action => {
         const { data } = response;
         store.dispatch(addBookData(data));
       } catch (error) {
-        // console.log(error);
+        throw new Error(error);
       }
 
       break;
