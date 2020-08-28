@@ -6,6 +6,7 @@ const booksMiddleware = store => next => async action => {
     FETCH_BOOK_DATA,
     REMOVE_BOOK,
     UPDATE_BOOK_PROGRESS,
+    CREATE_BOOK,
   } = bookActionsNames;
 
   const { addBookData } = bookActions;
@@ -18,6 +19,19 @@ const booksMiddleware = store => next => async action => {
         const response = await api.get('/books/');
         const { data } = response;
         store.dispatch(addBookData(data));
+      } catch (error) {
+        throw new Error(error);
+      }
+
+      break;
+    }
+
+    case CREATE_BOOK: {
+      next(action);
+      const { book } = action;
+
+      try {
+        await api.post('/books', book);
       } catch (error) {
         throw new Error(error);
       }
