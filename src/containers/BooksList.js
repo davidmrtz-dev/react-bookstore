@@ -11,8 +11,14 @@ const mapStateToProps = ({ books, filter }) => ({
   books,
   filter,
 });
-const { removeBook, changeFilter, updateBookProgress } = bookActions;
+const {
+  fetchBookData,
+  removeBook,
+  changeFilter,
+  updateBookProgress,
+} = bookActions;
 const mapDispatchToProps = dispatch => ({
+  fetchBookData: () => dispatch(fetchBookData()),
   removeBook: id => dispatch(removeBook(id)),
   changeFilter: filter => dispatch(changeFilter(filter)),
   updateBookProgress: (id, progress) =>
@@ -22,6 +28,7 @@ const mapDispatchToProps = dispatch => ({
 const BookList = ({
   books = {},
   filter,
+  fetchBookData,
   removeBook,
   changeFilter,
   updateBookProgress,
@@ -32,17 +39,17 @@ const BookList = ({
 
   const handleUpdateProgress = (e, id, progress) => {
     e.preventDefault();
-    updateBookProgress(id, parseInt(progress, 10).toString());
+    updateBookProgress(id, progress.toString());
   };
 
   const { booksList } = books;
-  const _books = booksList.reduce((result, e, i) => {
+  const _books = booksList.reduce((result, e) => {
     if (filter === 'All' || e.category === filter) {
       result.push(
         <Book
-          book={{ index: i, ...e }}
+          book={{ ...e, progress: e.progress.toString() }}
           updateProgress={handleUpdateProgress}
-          key={e.id}
+          key={e.title}
           removeBook={handleRemoveBook}
         />,
       );
@@ -68,6 +75,7 @@ BookList.propTypes = {
     loading: PropTypes.bool,
     booksList: PropTypes.array,
   }).isRequired,
+  fetchBookData: PropTypes.func.isRequired,
   removeBook: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
   changeFilter: PropTypes.func.isRequired,
