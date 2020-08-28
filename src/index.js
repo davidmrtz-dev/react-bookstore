@@ -3,11 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './components/App';
 import reducers from './reducers';
 import randomId from './tools/randomId';
+import booksMiddleware from './middlewares/booksMiddleware';
 
 const exampleLib = [
   {
@@ -55,7 +56,7 @@ const store = createStore(
     books: exampleRefactored,
     filter: 'All',
   },
-  composeWithDevTools(),
+  composeWithDevTools(applyMiddleware(booksMiddleware)),
 );
 
 ReactDOM.render(
