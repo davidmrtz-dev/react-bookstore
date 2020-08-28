@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Book = ({ book, removeBook, updateProgress }) => {
-  const { id, title, category, author, pages, progress } = book;
+  const {
+    id, title, category, author, pages, progress,
+  } = book;
   const [displayUpdateForm, toggle] = useState(false);
   const [deleteAnimClass, toggleDeleteAnim] = useState('');
   const [inputProgress, inputProgressUpdate] = useState(book.progress);

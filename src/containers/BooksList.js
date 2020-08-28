@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
@@ -22,8 +22,7 @@ const mapStateToProps = ({ books, filter }) => ({
 const mapDispatchToProps = dispatch => ({
   removeBook: id => dispatch(removeBook(id)),
   changeFilter: filter => dispatch(changeFilter(filter)),
-  updateBookProgress: (id, progress) =>
-    dispatch(updateBookProgress(id, progress)),
+  updateBookProgress: (id, progress) => dispatch(updateBookProgress(id, progress)),
 });
 
 const BookList = ({
