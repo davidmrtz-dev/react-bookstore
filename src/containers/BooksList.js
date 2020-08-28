@@ -28,71 +28,62 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateBookProgress(id, progress)),
 });
 
-class BookList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleRemoveBook = this.handleRemoveBook.bind(this);
-    this.handleUpdateProgress = this.handleUpdateProgress.bind(this);
-  }
-
-  handleRemoveBook(id) {
-    const { removeBook } = this.props;
+const BookList = ({
+  books,
+  filter,
+  removeBook,
+  updateBookProgress,
+  changeFilter,
+}) => {
+  const handleRemoveBook = id => {
     removeBook(id);
-  }
+  };
 
-  handleUpdateProgress(e, id, progress) {
+  const handleUpdateProgress = (e, id, progress) => {
     e.preventDefault();
-    const { updateBookProgress } = this.props;
     updateBookProgress(id, progress.toString());
-  }
+  };
 
-  componentDidMount() {
-    const { books, fetchBookData } = this.props;
-    const { booksList } = books;
-    if (booksList.length === 0) {
-      fetchBookData();
+  // componentDidMount() {
+  //   const { books, fetchBookData } = this.props;
+  //   const { booksList } = books;
+  //   if (booksList.length === 0) {
+  //     fetchBookData();
+  //   }
+  // }
+
+  const { booksList, loading } = books;
+  // debugger;
+  const _books = booksList.reduce((result, e) => {
+    if (filter === 'All' || e.category === filter) {
+      result.push(
+        <Book
+          book={{
+            ...e,
+            id: e.id.toString(),
+            progress: e.progress.toString(),
+          }}
+          updateProgress={handleUpdateProgress}
+          key={e.title}
+          removeBook={handleRemoveBook}
+        />,
+      );
     }
-  }
-
-  render() {
-    const { books } = this.props;
-    const { booksList, loading } = books;
-    const { filter } = this.props;
-    // debugger;
-    const _books = booksList.reduce((result, e) => {
-      if (filter === 'All' || e.category === filter) {
-        result.push(
-          <Book
-            book={{
-              ...e,
-              id: e.id.toString(),
-              progress: e.progress.toString(),
-            }}
-            updateProgress={this.handleUpdateProgress}
-            key={e.title}
-            removeBook={this.handleRemoveBook}
-          />,
-        );
-      }
-      return result;
-    }, []);
-    return (
-      <>
-        <div>
-          <h1 className="bookstore-title">Bookstore CMS</h1>
-        </div>
-        <CategoryFilter
-          filter={filter}
-          changeFilter={this.props.changeFilter}
-        />
-        <div className="book-list">
-          {loading && <Loader />}
-          {_books}
-        </div>
-      </>
-    );
-  }
-}
+    return result;
+  }, []);
+  return (
+    <>
+      <div>
+        <h1 className="bookstore-title">Bookstore CMS</h1>
+      </div>
+      <CategoryFilter filter={filter} changeFilter={changeFilter} />
+      <div className="book-list">
+        {loading && <Loader />}
+        {_books}
+      </div>
+    </>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);
 
