@@ -34,23 +34,11 @@ const BookList = ({
   updateBookProgress,
 }) => {
   const { booksList } = books;
-  const [book, setBook] = useState({
-    id: '',
-    progress: '',
-  });
   const activeBooks = getVisibleBooks(booksList, filter);
 
-  const handleChangeProgress = ({ target }) => {
-    setBook({
-      ...book,
-      id: target.id,
-      progress: target.value,
-    });
-  };
-
-  const handleUpdateSubmit = event => {
-    event.preventDefault();
-    updateBookProgress(book.id, parseInt(book.progress, 10).toString());
+  const handleUpdateProgress = (e, id, progress) => {
+    e.preventDefault();
+    updateBookProgress(id, parseInt(progress, 10).toString());
   };
 
   return (
@@ -67,8 +55,7 @@ const BookList = ({
             handleRemoveBook={() => {
               removeBook(book.id);
             }}
-            onUpdateProgress={handleUpdateSubmit}
-            onChangeProgress={handleChangeProgress}
+            updateProgress={handleUpdateProgress}
           />
         ))}
       </div>
@@ -81,7 +68,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(BookList);
 BookList.propTypes = {
   books: PropTypes.exact({
     loading: PropTypes.bool,
-    bookList: PropTypes.array,
+    booksList: PropTypes.array,
   }).isRequired,
   removeBook: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,

@@ -2,17 +2,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Book = ({
-  book,
-  handleRemoveBook,
-  onUpdateProgress,
-  onChangeProgress,
-}) => {
-  const {
-    id, title, category, author, pages, progress,
-  } = book;
+const Book = ({ book, handleRemoveBook, updateProgress }) => {
+  const { id, title, category, author, pages, progress } = book;
   const [displayUpdateForm, toggle] = useState(false);
   const [deleteAnimClass, toggleDeleteAnim] = useState('');
+  const [inputProgress, inputProgressUpdate] = useState(book.progress);
   const displayForm = displayUpdateForm
     ? { display: 'flex' }
     : { display: 'none' };
@@ -22,9 +16,9 @@ const Book = ({
   const strokeColor = percentCompleted === 100 ? '#32A745' : '#3481c9';
   const progressStyles = { transition: 'stroke-dashoffset 500ms linear' };
 
-  const updateProgressHandler = e => {
+  const handleUpdateProgress = e => {
     toggle(!displayUpdateForm);
-    onUpdateProgress(e, id, progress);
+    updateProgress(e, book.id, parseInt(inputProgress, 10));
   };
 
   const animationEnded = e => {
@@ -96,7 +90,7 @@ const Book = ({
         <form
           style={displayForm}
           className="update-page"
-          onSubmit={updateProgressHandler}
+          onSubmit={handleUpdateProgress}
         >
           <input
             id={id}
@@ -105,12 +99,12 @@ const Book = ({
             placeholder="pages"
             min="1"
             max={pages}
-            onChange={onChangeProgress}
+            onChange={e => inputProgressUpdate(e.target.value)}
             required
+            value={inputProgress}
           />
           <button type="submit">Update</button>
         </form>
-        {/* ---------------------------- */}
         <button
           onClick={() => toggle(!displayUpdateForm)}
           className="update-btn"
@@ -118,7 +112,6 @@ const Book = ({
         >
           Update progress
         </button>
-        {/* ---------------------------- */}
       </div>
     </div>
   );
@@ -136,6 +129,5 @@ Book.propTypes = {
     progress: PropTypes.string.isRequired,
   }).isRequired,
   handleRemoveBook: PropTypes.func.isRequired,
-  onUpdateProgress: PropTypes.func.isRequired,
-  onChangeProgress: PropTypes.func.isRequired,
+  updateProgress: PropTypes.func.isRequired,
 };
