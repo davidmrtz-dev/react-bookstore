@@ -27,6 +27,7 @@ const Book = ({ book, removeBook, updateProgress }) => {
     switch (animationName) {
       case 'disappear':
         removeBook(book.id);
+        // debugger;
         break;
       default:
         break;

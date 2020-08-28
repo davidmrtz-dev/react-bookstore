@@ -40,6 +40,7 @@ const BookList = ({
 
   const handleRemoveBook = id => {
     removeBook(id);
+    //debugger;
   };
 
   const handleUpdateProgress = (e, id, progress) => {
