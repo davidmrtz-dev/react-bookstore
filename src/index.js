@@ -7,7 +7,6 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './components/App';
 import reducers from './reducers';
-import randomId from './tools/randomId';
 import booksMiddleware from './middlewares/booksMiddleware';
 
 const store = createStore(
