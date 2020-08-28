@@ -52,10 +52,7 @@ const exampleRefactored = {
 
 const store = createStore(
   reducers,
-  {
-    books: exampleRefactored,
-    filter: 'All',
-  },
+
   composeWithDevTools(applyMiddleware(booksMiddleware)),
 );
 

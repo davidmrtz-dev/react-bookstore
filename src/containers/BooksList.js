@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
 import { bookActions } from '../actions';
+import Loader from '../components/Loader';
 import CategoryFilter from '../components/CategoryFilter';
 
 const mapStateToProps = ({ books, filter }) => ({
@@ -52,10 +53,10 @@ class BookList extends React.Component {
 
   render() {
     const { books } = this.props;
-    const { booksList } = books;
+    const { booksList, loading } = books;
     const { filter } = this.props;
-
-    const _books = booksList.reduce((result, e) => {
+    // debugger;
+    const bookies = booksList.reduce((result, e) => {
       if (filter === 'All' || e.category === filter) {
         result.push(
           <Book
@@ -81,7 +82,10 @@ class BookList extends React.Component {
           filter={filter}
           changeFilter={this.props.changeFilter}
         />
-        <div className="book-list">{_books}</div>
+        <div className="book-list">
+          {loading && <Loader />}
+          {bookies}
+        </div>
       </>
     );
   }

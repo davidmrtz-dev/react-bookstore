@@ -28,10 +28,10 @@ const book = (state, action) => {
   }
 };
 
-const defaultState = () => ({
+const defaultState = {
   loading: false,
   booksList: [],
-});
+};
 
 const books = (state = defaultState, action) => {
   switch (action.type) {
