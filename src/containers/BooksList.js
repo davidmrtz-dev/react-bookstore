@@ -60,7 +60,7 @@ const BookList = ({
         <Book
           book={{
             ...e,
-            id: e.id,
+            id: parseInt(e.id, 10),
             progress: e.progress.toString(),
           }}
           updateProgress={handleUpdateProgress}
