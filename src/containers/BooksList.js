@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
@@ -5,15 +6,6 @@ import PropTypes from 'prop-types';
 import Book from '../components/Book';
 import { bookActions } from '../actions';
 import CategoryFilter from '../components/CategoryFilter';
-
-const getVisibleBooks = (books, filter) => {
-  if (filter !== 'All') {
-    const newBooks = books.filter(b => b.category === filter);
-    return newBooks;
-  }
-
-  return books;
-};
 
 const mapStateToProps = ({ books, filter }) => ({
   books,
@@ -34,9 +26,6 @@ const BookList = ({
   changeFilter,
   updateBookProgress,
 }) => {
-  const { booksList } = books;
-  const activeBooks = getVisibleBooks(booksList, filter);
-
   const handleRemoveBook = id => {
     removeBook(id);
   };
@@ -46,22 +35,28 @@ const BookList = ({
     updateBookProgress(id, parseInt(progress, 10).toString());
   };
 
+  const { booksList } = books;
+  const _books = booksList.reduce((result, e, i) => {
+    if (filter === 'All' || e.category === filter) {
+      result.push(
+        <Book
+          book={{ index: i, ...e }}
+          updateProgress={handleUpdateProgress}
+          key={e.id}
+          removeBook={handleRemoveBook}
+        />,
+      );
+    }
+    return result;
+  }, []);
+
   return (
     <>
       <div>
         <h1 className="bookstore-title">Bookstore CMS</h1>
       </div>
       <CategoryFilter filter={filter} changeFilter={changeFilter} />
-      <div className="book-list">
-        {activeBooks.map(book => (
-          <Book
-            key={book.title}
-            book={book}
-            removeBook={handleRemoveBook}
-            updateProgress={handleUpdateProgress}
-          />
-        ))}
-      </div>
+      <div className="book-list">{_books}</div>
     </>
   );
 };
