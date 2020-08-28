@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Book = ({ book, handleRemoveBook, updateProgress }) => {
+const Book = ({ book, removeBook, updateProgress }) => {
   const { id, title, category, author, pages, progress } = book;
   const [displayUpdateForm, toggle] = useState(false);
   const [deleteAnimClass, toggleDeleteAnim] = useState('');
@@ -26,7 +26,7 @@ const Book = ({ book, handleRemoveBook, updateProgress }) => {
 
     switch (animationName) {
       case 'disappear':
-        handleRemoveBook(id);
+        removeBook(id);
         break;
       default:
         break;
@@ -128,6 +128,6 @@ Book.propTypes = {
     pages: PropTypes.string.isRequired,
     progress: PropTypes.string.isRequired,
   }).isRequired,
-  handleRemoveBook: PropTypes.func.isRequired,
+  removeBook: PropTypes.func.isRequired,
   updateProgress: PropTypes.func.isRequired,
 };

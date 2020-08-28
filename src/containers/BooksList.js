@@ -36,6 +36,10 @@ const BookList = ({
   const { booksList } = books;
   const activeBooks = getVisibleBooks(booksList, filter);
 
+  const handleRemoveBook = id => {
+    removeBook(id);
+  };
+
   const handleUpdateProgress = (e, id, progress) => {
     e.preventDefault();
     updateBookProgress(id, parseInt(progress, 10).toString());
@@ -52,9 +56,7 @@ const BookList = ({
           <Book
             key={book.title}
             book={book}
-            handleRemoveBook={() => {
-              removeBook(book.id);
-            }}
+            removeBook={handleRemoveBook}
             updateProgress={handleUpdateProgress}
           />
         ))}
