@@ -8,42 +8,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './components/App';
 import reducers from './reducers';
 import booksMiddleware from './middlewares/booksMiddleware';
-import randomId from './tools/randomId';
-
-const exampleLibFilled = [
-  {
-    id: randomId(),
-    author: 'Homer',
-    title: 'Odyssey',
-    category: 'Classic literature',
-    pages: '200',
-    progress: '100',
-  },
-  {
-    id: randomId(),
-    author: 'Ernest Cline',
-    title: 'Ready Player One',
-    category: 'Sci-Fi',
-    pages: '200',
-    progress: '200',
-  },
-  {
-    id: randomId(),
-    author: 'Isaac Asimov',
-    title: 'I, Robot',
-    category: 'Sci-Fi',
-    pages: '200',
-    progress: '10',
-  },
-  {
-    id: randomId(),
-    author: 'David Garcia',
-    title: 'Learning Python',
-    category: 'Learning',
-    pages: '200',
-    progress: '76',
-  },
-];
 
 const exampleLibVoid = [];
 
