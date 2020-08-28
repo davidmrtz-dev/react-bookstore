@@ -68,11 +68,7 @@ const books = (state = defaultState(), action) => {
     case REMOVE_BOOK:
       return {
         ...state,
-        booksList: [
-          ...state.booksList.filter(
-            book => parseInt(book.id, 10) !== parseInt(action.id, 10),
-          ),
-        ],
+        booksList: [...state.booksList.filter(book => book.id !== action.id)],
       };
     default:
       return state;
