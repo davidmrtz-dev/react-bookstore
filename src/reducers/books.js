@@ -52,7 +52,7 @@ const books = (state = defaultState, action) => {
 
       return {
         loading: false,
-        bookList: book,
+        booksList: book,
       };
     }
     case CREATE_BOOK:

@@ -1,3 +1,5 @@
+/* eslint-disable react/sort-comp */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
@@ -25,48 +27,65 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateBookProgress(id, progress)),
 });
 
-const BookList = ({
-  books = {},
-  filter,
-  fetchBookData,
-  removeBook,
-  changeFilter,
-  updateBookProgress,
-}) => {
-  const handleRemoveBook = id => {
+class BookList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleRemoveBook = this.handleRemoveBook.bind(this);
+    this.handleUpdateProgress = this.handleUpdateProgress.bind(this);
+  }
+
+  handleRemoveBook(id) {
+    const { removeBook } = this.props;
     removeBook(id);
-  };
+  }
 
-  const handleUpdateProgress = (e, id, progress) => {
+  handleUpdateProgress(e, id, progress) {
     e.preventDefault();
+    const { updateBookProgress } = this.props;
     updateBookProgress(id, progress.toString());
-  };
+  }
 
-  const { booksList } = books;
-  const _books = booksList.reduce((result, e) => {
-    if (filter === 'All' || e.category === filter) {
-      result.push(
-        <Book
-          book={{ ...e, progress: e.progress.toString() }}
-          updateProgress={handleUpdateProgress}
-          key={e.title}
-          removeBook={handleRemoveBook}
-        />,
-      );
-    }
-    return result;
-  }, []);
+  componentDidMount() {
+    const { fetchBookData } = this.props;
+    fetchBookData();
+  }
 
-  return (
-    <>
-      <div>
-        <h1 className="bookstore-title">Bookstore CMS</h1>
-      </div>
-      <CategoryFilter filter={filter} changeFilter={changeFilter} />
-      <div className="book-list">{_books}</div>
-    </>
-  );
-};
+  render() {
+    const { books } = this.props;
+    const { booksList } = books;
+    const { filter } = this.props;
+
+    const _books = booksList.reduce((result, e) => {
+      if (filter === 'All' || e.category === filter) {
+        result.push(
+          <Book
+            book={{
+              ...e,
+              id: e.id.toString(),
+              progress: e.progress.toString(),
+            }}
+            updateProgress={this.handleUpdateProgress}
+            key={e.title}
+            removeBook={this.handleRemoveBook}
+          />,
+        );
+      }
+      return result;
+    }, []);
+    return (
+      <>
+        <div>
+          <h1 className="bookstore-title">Bookstore CMS</h1>
+        </div>
+        <CategoryFilter
+          filter={filter}
+          changeFilter={this.props.changeFilter}
+        />
+        <div className="book-list">{_books}</div>
+      </>
+    );
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);
 

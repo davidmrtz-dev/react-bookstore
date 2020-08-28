@@ -11,7 +11,7 @@ const booksMiddleware = store => next => async action => {
       next(action);
 
       try {
-        const response = await api.get('/books');
+        const response = await api.get('/books/');
         const { data } = response;
         store.dispatch(addBookData(data));
       } catch (error) {
