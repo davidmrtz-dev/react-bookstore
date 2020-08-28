@@ -1,6 +1,12 @@
 import { bookActionsNames } from '../actions/index';
 
-const { CREATE_BOOK, REMOVE_BOOK, UPDATE_BOOK_PROGRESS } = bookActionsNames;
+const {
+  FETCH_BOOK_DATA,
+  ADD_BOOK_DATA,
+  CREATE_BOOK,
+  REMOVE_BOOK,
+  UPDATE_BOOK_PROGRESS,
+} = bookActionsNames;
 
 const book = (state, action) => {
   switch (action.type) {
@@ -29,6 +35,26 @@ const defaultState = () => ({
 
 const books = (state = defaultState, action) => {
   switch (action.type) {
+    case FETCH_BOOK_DATA:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ADD_BOOK_DATA: {
+      const book = action.data.map(e => ({
+        id: e.id,
+        title: e.title,
+        author: e.author,
+        category: e.category,
+        pages: e.pages,
+        progress: e.progress,
+      }));
+
+      return {
+        loading: false,
+        bookList: book,
+      };
+    }
     case CREATE_BOOK:
       return {
         ...state,
