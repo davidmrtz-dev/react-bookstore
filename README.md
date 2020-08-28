@@ -3,7 +3,7 @@
 > This is simple CMS built with React and Redux.
 
 <p align="center">
-  <img src="#">
+  <img src="./cms_main.gif">
 </p>
 
 ## Built With
@@ -19,7 +19,7 @@
 
 ## Live Demo
 
-- [Heroku :rocket:](#)
+- [Heroku :rocket:](https://bookstore-mx.herokuapp.com)
 
 ## Usage
 
