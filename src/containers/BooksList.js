@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
-import { removeBook, changeFilter, updateBookProgress } from '../actions';
+import { bookActions } from '../actions';
 import CategoryFilter from '../components/CategoryFilter';
 
 const getVisibleBooks = (books, filter) => {
@@ -19,10 +19,12 @@ const mapStateToProps = ({ books, filter }) => ({
   books,
   filter,
 });
+const { removeBook, changeFilter, updateBookProgress } = bookActions;
 const mapDispatchToProps = dispatch => ({
   removeBook: id => dispatch(removeBook(id)),
   changeFilter: filter => dispatch(changeFilter(filter)),
-  updateBookProgress: (id, progress) => dispatch(updateBookProgress(id, progress)),
+  updateBookProgress: (id, progress) =>
+    dispatch(updateBookProgress(id, progress)),
 });
 
 const BookList = ({

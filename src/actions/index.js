@@ -10,23 +10,13 @@ export const bookActionsNames = {
   CHANGE_FILTER,
 };
 
-export const createBook = book => ({
-  type: CREATE_BOOK,
-  book,
-});
-
-export const removeBook = id => ({
-  type: REMOVE_BOOK,
-  id,
-});
-
-export const updateBookProgress = (id, progress) => ({
-  type: UPDATE_BOOK_PROGRESS,
-  id,
-  progress,
-});
-
-export const changeFilter = filter => ({
-  type: CHANGE_FILTER,
-  filter,
-});
+export const bookActions = {
+  createBook: book => ({ type: CREATE_BOOK, book }),
+  removeBook: id => ({ type: REMOVE_BOOK, id }),
+  updateBookProgress: (id, progress) => ({
+    type: UPDATE_BOOK_PROGRESS,
+    id,
+    progress,
+  }),
+  changeFilter: filter => ({ type: CHANGE_FILTER, filter }),
+};

@@ -3,10 +3,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { createBook } from '../actions';
+import { bookActions } from '../actions';
 import categories from '../tools/categories';
 import randomId from '../tools/randomId';
 
+const { createBook } = bookActions;
 const mapStateToProps = ({ books }) => ({ books });
 const mapDispatchToProps = dispatch => ({
   createBook: book => dispatch(createBook(book)),
