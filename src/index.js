@@ -9,8 +9,19 @@ import App from './components/App';
 import reducers from './reducers';
 import booksMiddleware from './middlewares/booksMiddleware';
 
+const exampleLib = [];
+
+const exampleRefactored = {
+  loading: false,
+  booksList: exampleLib,
+};
+
 const store = createStore(
   reducers,
+  {
+    books: exampleRefactored,
+    filter: 'All',
+  },
   composeWithDevTools(applyMiddleware(booksMiddleware)),
 );
 

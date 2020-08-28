@@ -47,8 +47,11 @@ class BookList extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchBookData } = this.props;
-    fetchBookData();
+    const { books, fetchBookData } = this.props;
+    const { booksList } = books;
+    if (booksList.length === 0) {
+      fetchBookData();
+    }
   }
 
   render() {
