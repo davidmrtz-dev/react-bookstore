@@ -2,7 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
@@ -29,14 +29,18 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const BookList = ({
+  fetchBookData,
   books,
   filter,
   removeBook,
   updateBookProgress,
   changeFilter,
 }) => {
+  const { booksList, loading } = books;
+
   const handleRemoveBook = id => {
     removeBook(id);
+    // setBookList(booksList);
   };
 
   const handleUpdateProgress = (e, id, progress) => {
@@ -44,15 +48,12 @@ const BookList = ({
     updateBookProgress(id, progress.toString());
   };
 
-  // componentDidMount() {
-  //   const { books, fetchBookData } = this.props;
-  //   const { booksList } = books;
-  //   if (booksList.length === 0) {
-  //     fetchBookData();
-  //   }
-  // }
+  useEffect(() => {
+    if (booksList.length === 0) {
+      fetchBookData();
+    }
+  }, []);
 
-  const { booksList, loading } = books;
   // debugger;
   const _books = booksList.reduce((result, e) => {
     if (filter === 'All' || e.category === filter) {
