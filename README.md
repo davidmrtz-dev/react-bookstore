@@ -19,7 +19,7 @@
 
 ## Live Demo
 
-- [Heroku :rocket:](https://bookstore-mx.herokuapp.com)
+- [Heroku :rocket:](https://frosty-engelbart-d94f71.netlify.app)
 
 ## Usage
 
